@@ -63,3 +63,7 @@ Rancang bangun aplikasi secara langsung mengimplementasikan berbagai gagasan int
 ## 5. Daftar Pustaka
 
 Tanenbaum, A. S., & van Steen, M. (2007). *Distributed systems: Principles and paradigms* (Edisi ke-2). Pearson Prentice Hall.
+
+## 6. Link Youtube
+
+Link Video Youtube: https://youtu.be/JKX9G8j--AM
