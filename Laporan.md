@@ -30,19 +30,19 @@ graph TD
 ## 3. Analisis Performa dan Metrik
 
 Berdasarkan pengujian beban riil (*stress test*) yang dijalankan menggunakan `pytest` secara lokal pada endpoint `POST /publish` dan `GET /stats`:
-- **Throughput Eksekusi**: Sistem terbukti mampu menelan antrean sebanyak **5.000 log events** secara simultan. Keseluruhan proses asinkron ini tercatat memakan durasi eksekusi rata-rata di bawah **3 detik**. Performa kilat ini berhasil dicapai karena `asyncio.Queue` berfungsi memutus blokade antara penangkapan HTTP request dan eksekusi SQL.
+- **Throughput Eksekusi**: Sistem terbukti mampu menelan antrean sebanyak **6.242 log events** secara simultan. Keseluruhan proses asinkron ini tercatat memakan durasi eksekusi rata-rata **3 detik**. Performa kilat ini berhasil dicapai karena `asyncio.Queue` berfungsi memutus blokade antara penangkapan HTTP request dan eksekusi SQL.
 - **Log Evaluasi (Metrik `/stats`)**:
-  Setelah sistem menghantam lonjakan 5.000 log (di mana sengaja diinjeksi 1.000 data duplikat/identik), hasil keluaran JSON asli dari endpoint pemantauan secara nyata membuktikan integritas program:
+  Setelah sistem menghantam lonjakan 6.242 log (di mana sengaja diinjeksi 1.000 data duplikat/identik), hasil keluaran JSON asli dari endpoint pemantauan secara nyata membuktikan integritas program:
 
   ```json
   {
-    "received": 5000,
-    "unique_processed": 4000,
-    "duplicate_dropped": 1000,
+    "received": 6242,
+    "unique_processed": 4993,
+    "duplicate_dropped": 1248,
     "topics": [
-      "stress"
+      "sensor1, sensor2, sensor3, sensor4, sensor5, stress"
     ],
-    "uptime_seconds": 2.1485
+    "uptime_seconds": 301.71
   }
   ```
 
