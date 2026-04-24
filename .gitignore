@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# Database / Local State
+*.db
+aggregator.db
+test_aggregator.db
+
+# Testing
+.pytest_cache/
+coverage.xml
+.coverage
+
+# IDEs / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

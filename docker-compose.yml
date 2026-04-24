@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  aggregator:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - aggregator_data:/app
+    networks:
+      - pubsub_net
+    restart: unless-stopped
+
+  publisher:
+    build: .
+    command: ["python", "-m", "src.publisher"]
+    environment:
+      - AGGREGATOR_URL=http://aggregator:8080
+    depends_on:
+      - aggregator
+    networks:
+      - pubsub_net
+    restart: unless-stopped
+
+volumes:
+  aggregator_data:
+
+networks:
+  pubsub_net:
+    driver: bridge
